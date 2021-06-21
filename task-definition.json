@@ -61,9 +61,6 @@
     ],
     "volumes": [
         {
-            "host": {
-                "sourcePath": "db-data"
-            },
             "name": "Db-Data"
         }
     ],
