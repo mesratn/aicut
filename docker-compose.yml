@@ -1,11 +1,14 @@
 # We specify the version of docker compose
-version: "3.9"
+version: "3"
 # We specify the different services
 services: 
     # The api
     server:
         # the build folder
-        build: server
+        image: server
+        build: 
+            context: ./server
+            file: ./server/Dockerfile
         container_name: server_
         # the ports to map
         ports: 
@@ -19,10 +22,19 @@ services:
         networks:
             - private
             - public
+        logging:
+            driver: awslogs
+            options: 
+                awslogs-group: aicut
+                awslogs-region: eu-west-3
+                awslogs-stream-prefix: web
     # The client
     client:
         # the build folder
-        build: client
+        image: client
+        build: 
+            context: ./client
+            file: ./client/Dockerfile
         container_name: client_
         # the ports to map
         ports: 
@@ -36,7 +48,10 @@ services:
     # The machine learning server
     aiserver:
         # the build folder
-        build: ai-server
+        image: aiserver
+        build: 
+            context: ./ai-server
+            file: ./ai-server/Dockerfile
         container_name: aiserver_
         # the ports to map
         ports: 

@@ -109,7 +109,7 @@ jobs:
       uses: aws-actions/amazon-ecs-render-task-definition@v1
       with:
         task-definition: ${{ steps.render-aiserver.outputs.task-definition }}
-        container-name: Server
+        container-name: server
         image: ${{ steps.build-image-server.outputs.image }}
 
     - name: Fill in the new image ID in the Amazon ECS task definition of the client
@@ -117,7 +117,7 @@ jobs:
       uses: aws-actions/amazon-ecs-render-task-definition@v1
       with:
         task-definition: ${{ steps.render-aiserver.outputs.task-definition }}
-        container-name: Client
+        container-name: client
         image: ${{ steps.build-image-client.outputs.image }}
 
     - name: Deploy Amazon ECS task definition
