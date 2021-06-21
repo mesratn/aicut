@@ -73,7 +73,7 @@
     "memory": "512",
     "cpu": "256",
     "executionRoleArn": "arn:aws:iam::357890162125:role/ecsTaskExecutionRole",
-    "family": "",
+    "family": "aicut-task-definition",
     "taskRoleArn": "",
     "placementConstraints": []
 }
